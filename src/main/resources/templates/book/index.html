@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Book Details</h1>
+    <div>
+        <form th:action="@{/book/search}" th:method="post">
+            Search book by name: <input type="text" name="keyword" id="keyword">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <ul>
+        <li th:each="bookDetail: ${bookDetails}">
+            <span th:text="${bookDetail.id}"></span>
+            - <span th:text="${bookDetail.name}"></span>
+            - <span th:text="${bookDetail.publisher.getName()}"></span>
+            - <span th:text="${bookDetail.author}"></span>
+            - <span th:text="${bookDetail.genre}"></span>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+</head>
+<body>
+    <form th:action="@{/book/create}" th:method="post" th:object="${bookDetail}">
+        <div>
+            Id <input type="text" th:field="*{id}">
+            <span class="error" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+        </div>
+        <div>
+            Name <input type="text" th:field="*{name}">
+            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+        <div>
+            Author <input type="text" th:field="*{author}">
+            <span class="error" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+        </div>
+        <div>
+            Genre <input type="text" th:field="*{genre}">
+            <span class="error" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+        </div>
+        <select th:field="*{publisher}">
+            <option th:each="i : ${publisherCatalogs}" th:value="${i.getId()}" th:text="${i.getName()}">
+            </option>
+        </select>
+        <div>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+</body>
+</html>
